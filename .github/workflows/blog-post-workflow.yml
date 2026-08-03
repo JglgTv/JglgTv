@@ -20,4 +20,4 @@ jobs:
           feed_list: "https://dev.to/feed/jglg"
           max_post_count: 3
           date_format: "d mmm yyyy, HH:MM"
-          template: "<table width=\"100%\"><tr><td width=\"15%\" align=\"center\"><a href=\"$url\"><img width=\"80\" height=\"80\" style=\"border-radius: 50%; object-fit: cover;\" src=\"$cover_image\" alt=\"Thumbnail\"></a></td><td width=\"85%\"><h3><a href=\"$url\" style=\"text-decoration: none;\">$title</a></h3><p style=\"color: #888;\">$date</p><p>$description</p></td></tr></table><br/>"
+          template: "<table width=\"100%\"><tr><td width=\"15%\" align=\"center\"><a href=\"$url\"><img width=\"80\" height=\"80\" style=\"border-radius: 50%; object-fit: cover;\" src=\"https://github.com/JglgTv.png\" alt=\"Avatar\"></a></td><td width=\"85%\"><h3><a href=\"$url\" style=\"text-decoration: none;\">$title</a></h3><p style=\"color: #888;\">$date</p></td></tr></table><br/>"
