@@ -19,3 +19,5 @@ jobs:
         with:
           feed_list: "https://dev.to/feed/jglg"
           max_post_count: 3
+          date_format: "mmm d"
+          template: "<table width=\"100%\"><tr><td><a href=\"$url\"><img align=\"left\" width=\"40\" height=\"40\" src=\"https://github.com/JglgTv.png\" alt=\"Avatar\"></a> <b>Joaquim Gabriel</b><br/> $date<br/><br/><h2><a href=\"$url\" style=\"text-decoration: none;\">$title</a></h2><a href=\"$url\" style=\"text-decoration: none;\">💬 Add Comment</a></td></tr></table><br/>"
