@@ -1,0 +1,21 @@
+name: Latest blog post workflow
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"  # runs every 12 hours
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-readme-with-blog:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          feed_list: "https://dev.to/feed/jglg"
+          max_post_count: 3
