@@ -2,28 +2,49 @@ name: generate bomberman contribution graph
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # uma vez por dia
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 concurrency:
   group: bomberman-graph
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   generate:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
     steps:
       - name: generate bomberman SVG
-        uses: abozanona/pacman-contribution-graph@main
+        uses: abozanona/pacman-contribution-graph70945878b1118303b37b88060fc7145e1a57d7b1
         with:
           github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ secrets.PROFILE_GRAPH_TOKEN }}
           games: 'bomberman'
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: graph
+          path: dist
+          retention-days: 1
+
+  publish:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: graph
+          path: dist
+
       - name: push SVGs to the output branch
-        uses: crazy-max/ghaction-github-pages@v4
+        uses: crazy-max/ghaction-github-pages1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
         with:
           target_branch: output
           build_dir: dist
